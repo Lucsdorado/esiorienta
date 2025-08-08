@@ -1,0 +1,227 @@
+/* style.css - versión escalable (reemplaza tu style.css) */
+
+body {
+  font-family: 'balatro', sans-serif;
+  background: #f084ac;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'balatro';
+  src: url('balatro.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+h1 {
+  color: #c2185b;
+  margin-bottom: 12px;
+}
+
+/* contenedor general centrado */
+#game-container {
+  width: 100%;
+  max-width: 100%;
+  overflow: visible;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* tablero: ahora su tamaño lo fija JS directamente (no uses transform) */
+#tablero {
+  position: relative;
+  background-color: #fe4e8f;
+  border: 4px solid #000000;
+  border-radius: 30px;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+/* casillas: tamaño dinámico (JS las ajusta) */
+.casilla {
+  border-radius: 50%;
+  border-style: solid;
+  position: absolute;
+  transition: top 0.25s, left 0.25s;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+/* colores */
+.color1 {
+  background-color: #ff0000;
+}
+
+/* Rojo */
+.color2 {
+  background-color: #5aa929;
+}
+
+/* Verde */
+.color3 {
+  background-color: #5190cb;
+}
+
+/* Azul */
+.color4 {
+  background-color: #ffd21d;
+  color: black;
+}
+
+/* Amarillo */
+.color5 {
+  background-color: #974cfe;
+}
+
+/* Morado */
+.color6 {
+  background-color: #fb8c00;
+}
+
+/* Naranja */
+
+/* fichas jugadores (JS ajusta tamaño) */
+.jugador1,
+.jugador2 {
+  border-radius: 50%;
+  box-sizing: border-box;
+  z-index: 20;
+  position: relative;
+  /* se insertan dentro de la casilla */
+}
+
+/* estilo por defecto, JS hará override de width/height/border */
+.jugador1 {
+  background-color: black;
+  border: 2px solid white;
+}
+
+.jugador2 {
+  background-color: white;
+  border: 2px solid black;
+}
+
+/* controles y botones */
+#controles {
+  margin-top: 20px;
+}
+
+button {
+  font-family: balatro;
+  padding: 10px 20px;
+  font-size: 1.1em;
+  background-color: #fe4e8f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #ec407a;
+}
+
+#mensaje {
+  font-family: balatro;
+  margin-top: 10px;
+  font-size: 1.2em;
+}
+
+/* Preguntas emergente */
+#pregunta-container {
+  display: none;
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  color: black;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+  max-width: 500px;
+  text-align: center;
+}
+
+#pregunta-container p {
+  font-size: 1.1em;
+  margin-bottom: 14px;
+}
+
+#pregunta-container button {
+  font-family: balatro;
+  margin: 8px;
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: #f06292;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#pregunta-container button:hover {
+  background-color: #ec407a;
+}
+
+#pregunta-container h2 {
+  font-size: 1.3em;
+  margin-bottom: 10px;
+  color: #c2185b;
+}
+
+/* decoracion image: JS ajusta tamaño y posición */
+#decoracion {
+  position: absolute;
+  z-index: 5;
+}
+
+/* efecto de rebote */
+.rebote {
+  animation: rebote 0.6s;
+}
+
+@keyframes rebote {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* mobile tweaks */
+@media (max-width: 600px) {
+  button {
+    font-size: 1em;
+    padding: 8px 14px;
+  }
+
+  #pregunta-container {
+    top: 10%;
+    width: 90%;
+    max-width: none;
+  }
+}
+
+#decoracion {
+  display: block;
+  z-index: 6;
+  pointer-events: none;
+}
